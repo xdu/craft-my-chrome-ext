@@ -1,24 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import FeedView from '../view/FeedView.vue'
+import ArticleView from '../view/ArticleView.vue'
+import ConfigView from '../view/ConfigView.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: FeedView
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/article',
+    name: 'article',
+    component: ArticleView
+  },
+  {
+    path: '/config',
+    name: 'config',
+    component: ConfigView
   }
 ]
 
+// Set the base to popup.html to avoid the warning of VueRouter : no match found
+// for location with path 'popup.html'.
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory('/popup.html'),
   routes
 })
 
